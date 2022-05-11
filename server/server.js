@@ -4,15 +4,15 @@ const cors = require("cors");
 const mongooseDB = require("./config/config");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
+const categoryRoutes = require("./routes/categoryRoute");
 const app = express();
 dotEnv.config();
 app.use(cors());
 app.use(express.json());
 mongooseDB();
 app.use("/api/users", userRoutes);
+app.use("/api/category", categoryRoutes);
 app.use("/api/product", productRoutes);
-// app.use("/api/login", userRoutes);
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Api is Running");
